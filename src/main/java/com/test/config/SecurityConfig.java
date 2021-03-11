@@ -33,8 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("index");
-        registry.addViewController("/login.html").setViewName("login"); // 매핑
+        registry.addViewController("/").setViewName("indexdd");
+        registry.addViewController("/loginddd.html").setViewName("logindd"); // 매핑
     }
 
     @Override
@@ -46,7 +46,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 // 서블릿 API 통합
                 .and().httpBasic()
                 // http 기본인증
-                .and().logout().logoutSuccessUrl("/")
+                .and().logout().logoutSuccessUrl("/d")
         .and().headers()
                 // 로그아웃후 브라우저의 뒤로 가기 버튼을 사용하면 로그아웃이 성공하더라도 이전 페이지를 계속볼수 있다.
                 // 이는 브라우적 ㅏ페이지를 캐시한다는 사실과 관련이 있다.
@@ -59,10 +59,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter implements WebM
                 // 다음에 사용자가 동일한 웹 애플리케이션에 액세스하면 이 토큰이 감지돼 사용자가 잗종으로 로그인할 수 있따.
                 // 정적 Remeber-Me 토큰은 해커가 캡쳐할 수 있기 때문에 보안문제가 있다. 그러므로 롤링토큰을 지원하지만,
                 // 토큰을 유지하려면 데이터베이스가 필요하다. 자세한것은 다음게시물에 작성예정이다.
-        .and().formLogin().loginPage("/login.html").defaultSuccessUrl("/books.html").failureUrl("/login.html?error=true").permitAll()
+        .and().formLogin().loginPage("/logidn.html").defaultSuccessUrl("/boodks.html").failureUrl("/ldogin.html?error=true").permitAll()
                 // 폼기반 로그인
                 .and().authorizeRequests()
-                .mvcMatchers("/").permitAll()
+                .mvcMatchers("/d").permitAll()
                 // "/"들어오는 요청은 모두허용
                 .anyRequest().authenticated();
                 // 어떤요청이든 인증확인
