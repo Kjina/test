@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+		<th:block th:include="common/header"></th:block>
+		<title>위즈니-마이페이지</title> 
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1"/>
+<!--	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,target-densitydpi=medium-dpi" />-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="http://www..co.kr" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name = "format-detection" content = "telephone=no"/>
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="위즈니" />
+		<meta property="og:url" content="http://www..co.kr" />
+		<meta property="og:title" content="위즈니" />
+		<meta property="og:description" content="위즈니" />
+		<meta property="og:image" content="" />
+	
+		<script type="text/javascript" src="/common/js/jquery-1.8.2.min.js"></script>
+		<script src="/js/common/common_func.js"></script>
+		<script type="text/javascript" src="/common/js/common.js"></script>
+		<script type="text/javascript" src="/common/js/slick.min.js"></script>
+</head>
+<body>
+	<!--Wrap-->
+	<div id="wrap">
+	
+		<!-- Skip Navigation -->
+		<span id="top_skip">
+			<a href="#gnb_wrap" onclick="$('#gnb_wrap').attr('tabindex', '-1').focus(); return false;">메뉴바로가기</a>
+			<a href="#container" onclick="$('#container').attr('tabindex', '-1').focus(); return false;">본문바로가기</a>
+		</span><!-- END Skip Navigation -->
+
+			inquiryReg : <div th:text="${inquiryReg}"></div>  
+
+			<!--Container-->
+			<div id="container">
+
+				<div class="inner">
+					<div class="sellCnt">
+
+					<script>
+						
+						jQuery(document).ready(function($){
+							
+							$(".lnb_click a").on("click", function(){
+								var $q = $(this);
+								var $ct = $(this).next(".lsnb");
+								$(".lsnb").not($ct).slideUp('fast', function(){
+									$(".lnb_click a").not($q).removeClass("on");
+								});
+								$q.toggleClass("on");
+								$ct.stop().slideToggle('fast');
+							});
+
+						});
+
+					</script>
+						
+						<!-- 마이페이지 -->
+                        <div class="myWiz">
+                            <div class="myWiz_top" th:attr="onclick=|myMain('MM');|" style="cursor:pointer">마이페이지</div>
+                            <div class="myWiz_list">
+                                <ul class="lnb">
+                                    <li class="lnb_click"><a href="javascript:;">e쿠폰/마일리지</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myVirtual('VM');">등록물품관리</a></li>
+                                            <li><a href="javascript:myVirtual('TL');">거래내역</a></li>
+                                            <li><a href="javascript:myVirtual('PL');">패널티내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">일반상품</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myGoods('GM');">등록상품관리</a></li>
+                                            <li><a href="javascript:myGoods('SP');">판매진행</a></li>
+                                            <li><a href="javascript:myGoods('SH');">판매내역</a></li>
+                                            <li><a href="javascript:myGoods('PH');">주문결제내역</a></li>
+                                            <li><a href="javascript:myGoods('TK');">위즈톡</a></li>
+                                            <li><a href="javascript:myGoods('LS');">링크샵 상품관리</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈캐시</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzCash('WC');">위즈캐시충전</a></li>
+                                            <li><a href="javascript:myWizzCash('CH');">충전내역</a></li>
+                                            <li><a href="javascript:myWizzCash('CW');">위즈캐시출금</a></li>
+                                            <li><a href="javascript:myWizzCash('WH');">위즈캐시출금내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈포인트</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzPoint('WH');">포인트내역</a></li>
+                                            <li><a href="javascript:myWizzPoint('RA');">추천인적립</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">회원정보</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myUserInfo('RG');">인증관리</a></li>
+                                            <li><a href="javascript:myUserInfo('SS');">알림설정</a></li>
+                                            <li><a href="javascript:myUserInfo('RP');">비밀번호 재설정</a></li>
+                                            <li><a href="javascript:myUserInfo('CN');">닉네임 수정신청</a></li>
+                                            <li><a href="javascript:myUserInfo('MW');">회원탈퇴</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">1:1문의</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myInquiry('IH');">문의내역</a></li>
+                                            <li><a href="javascript:myInquiry('IR');">문의등록</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- //마이페이지 -->
+
+
+						<div class="mypage">
+							<h3 class="sub_title mb0">마이페이지</h3>
+
+							<table class="my_grade">
+								<tr>
+									<td>
+										<p class="medal bronze"><img src="/common/image/sub/bronze.png" alt="브론즈" class="img-mid"> <big>BRONZE</big></p>
+										<p class="mt5">판매수수료 : 2% / 구매수수료 : 1%</p>
+										<p class="the sky mt15"><a href="#">회원등급 자세히 보기</a></p>
+									</td>
+									<td>
+										<div class="clearfix mb30">
+											<p class="float-l"><strong>보유 캐시</strong></p>
+											<p class="float-r align-r"><strong><span class="sky">2,800,000</span> 캐시</strong></p>
+										</div>
+										<button type="button" class="plain sameBtn btn-xs gray">충전</button>
+										<button type="button" class="plain ml20 sameBtn btn-xs gray">출금</button>
+									</td>
+									<td>
+										<div class="clearfix mb30">
+											<p class="float-l"><strong>보유 포인트</strong></p>
+											<p class="float-r align-r"><strong><span class="sky">2,800</span> 포인트</strong></p>
+										</div>
+										<button type="button" class="plain sameBtn btn-xs gray">전환</button>
+									</td>
+								</tr>
+							</table>
+							
+							<div class="my_wrap my_main mt50">
+								<h3 class="my_tit">거래현황(e쿠폰/마일리지)</h3>
+								<table>
+									<tr class="wid25">
+										<th>판매등록</th>
+										<th>판매완료</th>
+										<th>구매등록</th>
+										<th>구매완료</th>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>23</td>
+										<td>0</td>
+										<td>2</td>
+									</tr>
+								</table>
+							</div>
+
+							<div class="my_wrap my_main">
+								<h3 class="my_tit">거래현황(일반상품)</h3>
+								<table>
+									<tr class="wid6">
+										<th>판매등록</th>
+										<th>판매진행</th>
+										<th>판매완료</th>
+										<th>프리미엄 등록</th>
+										<th>주문/결제</th>
+										<th>위즈톡</th>
+									</tr>
+									<tr>
+										<td>1</td>
+										<td>1</td>
+										<td>35</td>
+										<td>0</td>
+										<td>2</td>
+										<td class="cols">
+											<p>
+												<small>판매</small><br>
+												4
+											</p>
+											<p>
+												<small>구매</small><br>
+												1
+											</p>
+										</td>
+									</tr>
+								</table>
+							</div>
+
+							<div class="my_wrap my_main">
+								<h3 class="my_tit">회원정보</h3>
+								<table>
+									<tr>
+										<th>알림설정</th>
+										<th colspan="3">인증관리</th>
+									</tr>
+									<tr class="wid25">
+										<td>
+											<p><img src="/web5/image/sub/lock.png" alt=""></p>
+											<p class="mt25">알림설정</p>
+										</td>
+										<td>
+											<p><img src="/web5/image/sub/inj01.png" alt="" height="50"></p>
+											<p class="sky">이메일 인증 완료</p>
+											<p class="mt15">이메일은 변경이 불가능합니다.</p>
+										</td>
+										<td>
+											<p><img src="/web5/image/sub/inj02.png" alt="" height="50"></p>
+											<p class="sky mb10">휴대폰 인증 완료</p>
+											<button type="button" class="plain sameBtn btn-xs gray">재인증하기</button>
+										</td>
+										<td>
+											<p><img src="/web5/image/sub/inj03.png" alt="" height="50"></p>
+											<p class="sky mb10">계좌 미인증</p>
+											<button type="button" class="plain sameBtn btn-xs">인증하기</button>
+										</td>
+										
+									</tr>
+								</table>
+							</div>
+
+						</div>
+
+
+					</div><!-- END sellCnt -->
+				</div><!-- END inner -->
+
+			</div><!--END Container-->
+		<div id="wizzFooter">
+			<footer th:include="common/footer"></footer>
+		</div>
+</body>
+</html>

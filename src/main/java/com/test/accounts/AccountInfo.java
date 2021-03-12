@@ -1,4 +1,4 @@
-package com.test.user;
+package com.test.accounts;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -22,7 +22,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 @Getter
-public class UserInfo implements UserDetails {
+public class AccountInfo implements UserDetails {
 
   @Id
   @Column(name = "code")
@@ -39,7 +39,7 @@ public class UserInfo implements UserDetails {
   private String auth;
 
   @Builder
-  public UserInfo(String email, String password, String auth) {
+  public AccountInfo(String email, String password, String auth) {
     this.email = email;
     this.password = password;
     this.auth = auth;

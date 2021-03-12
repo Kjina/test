@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class LoginController {
 	
-	@GetMapping("/")
+	/*@GetMapping("/login")
 	public String login(@AuthenticationPrincipal User user) {
 		if(user != null) {
 			if(user.getAuthorities().contains(new SimpleGrantedAuthority("ROLE_VIEW"))) {
@@ -28,5 +28,5 @@ public class LoginController {
 	public String logoutPage(HttpServletRequest request, HttpServletResponse response) {
 		new SecurityContextLogoutHandler().logout(request, response, SecurityContextHolder.getContext().getAuthentication());
 		return "redirect:/login";
-	}
+	}*/
 }

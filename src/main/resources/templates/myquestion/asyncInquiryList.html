@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+    <input id="totalCnt" type="hidden" th:value="${list.totalCnt}"/>
+    <input id="dataSize" type="hidden" th:value="${list.dataSize}"/>
+          <table class="ane_list">
+			<tr>
+		      <th>등록 일시</th>
+              <th>유형</th>
+              <th>제목</th>
+              <th class="br0">상태</th>
+			</tr>
+			<th:block th:if="${list.totalCnt}==0">
+                <tr>
+                    <td colspan="4" style="padding: 20px 0;">등록된 문의 내역이 없습니다.</td>
+                </tr>
+            </th:block> 
+			<th:block th:each="list : ${list.list}">      
+               <tr th:attr="onclick=|javascript:inquiryDetailPage('${list.noticeId}');|">
+		           <td th:text="${list.regDt}"></td>
+		           <td th:if="${list.questionType}=='T'">거래 문의</td>
+		           <td th:if="${list.questionType}=='A'">인증 문의</td>
+		           <td th:if="${list.questionType}=='C'">캐시 문의</td>
+		           <td th:if="${list.questionType}=='P'">제휴 문의</td>
+		           <td th:if="${list.questionType}=='E'">기타 문의</td>
+		           <td th:if="${list.questionType}=='W'">회원 탈퇴 신청</td>
+		           <td th:text="${list.title}"></td>
+		           <td class="br0" th:if="${list.answerType}=='W'">답변 대기</td>
+		           <td class="br0" th:if="${list.answerType}=='C'">답변 완료</td>
+		           <td class="br0" th:if="${list.answerType}=='P'">처리중</td>
+	           </tr>
+	        </th:block>
+		</table>
+</html>

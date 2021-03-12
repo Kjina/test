@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+		<th:block th:include="common/header"></th:block>
+		<title>위즈니-마이페이지</title> 
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1"/>
+<!--	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,target-densitydpi=medium-dpi" />-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="http://www..co.kr" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name = "format-detection" content = "telephone=no"/>
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="위즈니" />
+		<meta property="og:url" content="http://www..co.kr" />
+		<meta property="og:title" content="위즈니" />
+		<meta property="og:description" content="위즈니" />
+		<meta property="og:image" content="" />
+		 
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+		<script type="text/javascript" src="/common/js/jquery-1.9.1.min.js"></script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script src="./jquery-ui-1.12.1/datepicker-ko.js"></script>
+		<script type="text/javascript" src="/js/common/common_func.js"></script>
+		<script type="text/javascript" src="/js/mypage/myquestion/inquiryHistory.js"></script>
+        <script type="text/javascript" src="/common/js/common.js"></script>
+        <script type="text/javascript" src="/common/js/slick.min.js"></script>
+        
+        <script type="text/javascript">
+        
+        $(function(){
+            $("#date1, #date2").datepicker({
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+        
+        </script>
+</head>
+<body>
+	<!--Wrap-->
+	<div id="wrap">
+		<div class="sub_link">
+			<div class="inner">
+				<ul>
+					<li>홈&nbsp;&nbsp;&nbsp; &gt; &nbsp;&nbsp;&nbsp; 마이페이지 &nbsp;&nbsp;&nbsp; &gt; &nbsp;&nbsp;&nbsp; 1:1문의 &nbsp;&nbsp;&nbsp; &gt; &nbsp;&nbsp;&nbsp; 1:1 문의 내역 </li> 
+				</ul>
+			</div>
+		</div>
+		<!-- Skip Navigation -->
+		<span id="top_skip">
+			<a href="#gnb_wrap" onclick="$('#gnb_wrap').attr('tabindex', '-1').focus(); return false;">메뉴바로가기</a>
+			<a href="#container" onclick="$('#container').attr('tabindex', '-1').focus(); return false;">본문바로가기</a>
+		</span><!-- END Skip Navigation -->
+			<!--Container-->
+            <div id="container">
+
+                <div class="inner">
+                    <div class="sellCnt">
+                        
+                        <!-- 마이페이지 -->
+                        <div class="myWiz">
+                            <div class="myWiz_top" th:attr="onclick=|myMain('MM');|" style="cursor:pointer">마이페이지</div>
+                            <div class="myWiz_list">
+                                <ul class="lnb">
+                                    <li class="lnb_click"><a href="javascript:;">e쿠폰/마일리지</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myVirtual('VM');">등록물품관리</a></li>
+                                            <li><a href="javascript:myVirtual('TL');">거래내역</a></li>
+                                            <li><a href="javascript:myVirtual('PL');">패널티내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">일반상품</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myGoods('GM');">등록상품관리</a></li>
+                                            <li><a href="javascript:myGoods('SP');">판매진행</a></li>
+                                            <li><a href="javascript:myGoods('SH');">판매내역</a></li>
+                                            <li><a href="javascript:myGoods('PH');">주문결제내역</a></li>
+                                            <li><a href="javascript:myGoods('TK');">위즈톡</a></li>
+                                            <li><a href="javascript:myGoods('LS');">링크샵 상품관리</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈캐시</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzCash('WC');">위즈캐시충전</a></li>
+                                            <li><a href="javascript:myWizzCash('CH');">충전내역</a></li>
+                                            <li><a href="javascript:myWizzCash('CW');">위즈캐시출금</a></li>
+                                            <li><a href="javascript:myWizzCash('WH');">위즈캐시출금내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈포인트</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzPoint('WH');">포인트내역</a></li>
+                                            <li><a href="javascript:myWizzPoint('RA');">추천인적립</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">회원정보</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myUserInfo('RG');">인증관리</a></li>
+                                            <li><a href="javascript:myUserInfo('SS');">알림설정</a></li>
+                                            <li><a href="javascript:myUserInfo('RP');">비밀번호 재설정</a></li>
+                                            <li><a href="javascript:myUserInfo('CN');">닉네임 수정신청</a></li>
+                                            <li><a href="javascript:myUserInfo('MW');">회원탈퇴</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">1:1문의</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myInquiry('IH');">문의내역</a></li>
+                                            <li><a href="javascript:myInquiry('IR');">문의등록</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- //마이페이지 -->
+
+                        
+                        
+						<div class="mypage">
+							<h3 class="sub_title ">1:1 문의 내역</h3> 
+							
+                            <table class="myWiz_ser">
+                                <tr>
+                                    <th>검색분류</th>
+                                    <td>
+                                        <select name="questionType" id="" >
+                                            <option value="">유형선택</option>
+                                            <option value="T">거래 문의</option>
+                                            <option value="A">인증 문의</option>
+                                            <option value="C">캐시 문의</option>
+                                            <option value="P">제휴 문의</option>
+                                            <option value="E">기타 문의</option>
+                                            <option value="W">회원 탈퇴 신청</option>
+                                        </select>
+                                        <select name="answerType" id="" class="ml5">
+                                            <option value="">상태선택</option>
+                                            <option value="W">답변 대기</option>
+                                            <option value="C">답변 완료</option>
+                                            <option value="P">처리중</option>
+                                        </select>
+                                    </td>
+                                    <th>검색기간</th>
+                                    <td class="clearfix">
+                                        <div class="calendar_web5">
+                                            <input type="text" class="inputSearchStartDate" id="date1" placeholder="2018-10-03" name="startDt">
+                                            <span class="calBtn">
+                                                <input type="text" name="date" id="date1" size="12" />
+                                                <label for="date1"><img src="/common/image/sub/cal_icon.png" alt="" class="img-mid"></label>
+                                            </span>
+                                            <span class="ml5 mr5">~</span>
+                                            <input type="text" class="inputSearchEndDate" id="date2" placeholder="2018-10-03" name="endDt">
+                                            <span class="calBtn">
+                                                <input type="text" name="date" id="date2" size="12" />
+                                                <label for="date2"><img src="/common/image/sub/cal_icon.png" alt="" class="img-mid"></label>
+                                            </span>
+                                        </div>
+                                        <ul class="cal_link">
+                                            <li><a class="btnSearchDate" data-term="7" href="javascript:;">1주일</a></li>
+                                            <li><a class="btnSearchDate" data-term="30" href="javascript:;">1개월</a></li>
+                                            <li><a class="btnSearchDate" data-term="90" href="javascript:;">3개월</a></li>
+                                            <li><a class="btnSearchDate" data-term="all" href="javascript:;">전체</a></li>
+                                        </ul>
+                                    </td>
+                                </tr>
+                                
+                            </table>
+
+                            <div class="mt30 align-c mb30">
+                                <button type="button" class="sameBtn btn-s" onclick="searchType()">검색</button>
+                                <button type="button" class="sameBtn gray btn-s ml15" onclick="reset()">초기화</button>
+                            </div>
+
+                            <hr class="mb30">
+                            
+                            <div class="clearfix mb10 wiz_select" style="position: relative;">
+                                <div class="float-l">
+                                                                         총 <span id="totalCount"></span>개
+                                </div>
+                                <div class="float-r">
+                                    <select id="selSort">
+                                        <option value="DATE_DESC">등록일시 ↓</option>
+                                        <option value="DATE_ASC">등록일시 ↑</option>
+                                    </select>
+                                    <select id="dataSize" class="ml10">
+                                        <option value="10">10개씩 보기</option>
+                                        <option value="20">20개씩 보기</option>
+                                        <option value="30">30개씩 보기</option>
+                                        <option value="40">40개씩 보기</option>
+                                        <option value="50">50개씩 보기</option>
+                                        <option value="100">100개씩 보기</option>
+                                    </select>
+                                </div>
+                            </div>
+
+	                        <div class="list_wrap search_view">
+	
+	                        </div>
+	    
+	                        <div id="generalSalePaging" class="board-pager mt60"></div>
+
+                            <div class="mt40 align-c">
+                                <button type="button" class="sameBtn" onclick="location.href = '/myPage/myQuestion/inquiryReg';">문의하기</button>
+                            </div>
+                            
+
+                        </div>
+
+
+                    </div><!-- END sellCnt -->
+                </div><!-- END inner -->
+
+            </div><!--END Container-->
+		<div id="wizzFooter">
+			<footer th:include="common/footer"></footer>
+		</div>
+</body>
+</script>
+</html>

@@ -1,11 +1,11 @@
-package com.test.user;
+package com.test.accounts;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserInfoDto {
+public class AccountInfoDto {
   private String email;
   private String password;
 

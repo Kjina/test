@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+		<th:block th:include="common/header"></th:block>
+		<title>위즈니-마이페이지</title> 
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1"/>
+<!--	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,target-densitydpi=medium-dpi" />-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="http://www..co.kr" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name = "format-detection" content = "telephone=no"/>
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="위즈니" />
+		<meta property="og:url" content="http://www..co.kr" />
+		<meta property="og:title" content="위즈니" />
+		<meta property="og:description" content="위즈니" />
+		<meta property="og:image" content="" />
+		
+        <link rel="stylesheet" href="/common/css/board.css" />
+
+		<script type="text/javascript" src="/common/js/jquery-1.8.2.min.js"></script>
+		<script type="text/javascript" src="/common/js/jquery-1.9.1.min.js"></script>
+		<script type="text/javascript" src="/js/common/common_func.js"></script>
+		 <script type="text/javascript" src="/js/mypage/myquestion/inquiryDetail.js"></script>
+        <script type="text/javascript" src="/common/js/common.js"></script>
+        <script type="text/javascript" src="/common/js/slick.min.js"></script>
+</head>
+<body>
+	<!--Wrap-->
+	<div id="wrap">
+	
+		<!-- Skip Navigation -->
+		<span id="top_skip">
+			<a href="#gnb_wrap" onclick="$('#gnb_wrap').attr('tabindex', '-1').focus(); return false;">메뉴바로가기</a>
+			<a href="#container" onclick="$('#container').attr('tabindex', '-1').focus(); return false;">본문바로가기</a>
+		</span><!-- END Skip Navigation -->
+			<!--Container-->
+            <div id="container">
+
+                <div class="inner">
+                    <div class="sellCnt">
+                        
+                        <!-- 마이페이지 -->
+                        <div class="myWiz">
+                            <div class="myWiz_top" th:attr="onclick=|myMain('MM');|" style="cursor:pointer">마이페이지</div>
+                            <div class="myWiz_list">
+                                <ul class="lnb">
+                                    <li class="lnb_click"><a href="javascript:;">e쿠폰/마일리지</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myVirtual('VM');">등록물품관리</a></li>
+                                            <li><a href="javascript:myVirtual('TL');">거래내역</a></li>
+                                            <li><a href="javascript:myVirtual('PL');">패널티내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">일반상품</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myGoods('GM');">등록상품관리</a></li>
+                                            <li><a href="javascript:myGoods('SP');">판매진행</a></li>
+                                            <li><a href="javascript:myGoods('SH');">판매내역</a></li>
+                                            <li><a href="javascript:myGoods('PH');">주문결제내역</a></li>
+                                            <li><a href="javascript:myGoods('TK');">위즈톡</a></li>
+                                            <li><a href="javascript:myGoods('LS');">링크샵 상품관리</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈캐시</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzCash('WC');">위즈캐시충전</a></li>
+                                            <li><a href="javascript:myWizzCash('CH');">충전내역</a></li>
+                                            <li><a href="javascript:myWizzCash('CW');">위즈캐시출금</a></li>
+                                            <li><a href="javascript:myWizzCash('WH');">위즈캐시출금내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈포인트</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzPoint('WH');">포인트내역</a></li>
+                                            <li><a href="javascript:myWizzPoint('RA');">추천인적립</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">회원정보</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myUserInfo('RG');">인증관리</a></li>
+                                            <li><a href="javascript:myUserInfo('SS');">알림설정</a></li>
+                                            <li><a href="javascript:myUserInfo('RP');">비밀번호 재설정</a></li>
+                                            <li><a href="javascript:myUserInfo('CN');">닉네임 수정신청</a></li>
+                                            <li><a href="javascript:myUserInfo('MW');">회원탈퇴</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">1:1문의</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myInquiry('IH');">문의내역</a></li>
+                                            <li><a href="javascript:myInquiry('IR');">문의등록</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- //마이페이지 -->
+
+
+						<div class="mypage">
+                            <h3 class="sub_title mb0">1:1 문의 내역</h3>
+                            
+                            <!-- Board wrap -->
+                            <div class="board-wrap">
+                                <!-- board view -->
+                                <div class="board-view">
+                                    
+                                    <div class="board-view-tit clearfix">
+                                        <p class="float-l">
+	                                        <small th:if="${detail.questionType}=='T'">거래 문의</small>
+						                    <small th:if="${detail.questionType}=='A'">인증 문의</small>
+						                    <small th:if="${detail.questionType}=='C'">캐시 문의</small>
+						                    <small th:if="${detail.questionType}=='P'">제휴 문의</small>
+						                    <small th:if="${detail.questionType}=='E'">기타 문의</small>
+						                    <small th:if="${detail.questionType}=='W'">회원 탈퇴 신청</small>
+                                            &nbsp; | &nbsp;
+                                            <p th:text="${detail.title}"></p>
+                                        </p>
+                                        <p class="float-r" style="font-weight:400; color: #666; font-size: 15px;" th:text="${detail.regDt}"></p>
+                                    </div>
+                                    
+                                    <div class="board-view-ct" th:utext="${detail.contents}">
+                                     
+                                    </div>
+                                    <br/>
+                                    <ul class="board-view-file ml15">
+                                        <li style="cursor:pointer"><p th:text="${detail.fileNm}" id="imagePopup"></p></li>
+                                    </ul>
+                                    <hr th:if="${detail.answerType}!='C'">
+                                    <table class="board_web5 mt40" th:if="${detail.answerType}=='C'">
+                                        <tr>
+                                            <th>답변내용</th>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <p th:utext="${detail.comments}"></p>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    
+
+                                </div><!-- END board view -->
+                            </div><!-- END Board wrap -->
+
+                            
+
+                            <div class="mt40 align-c">
+                                <button type="button" th:if="${detail.answerType}=='W'" class="sameBtn" th:attr="onclick=|javascript:modifyInquiry('${detail.noticeId}');|">수정하기</button>
+                                <button type="button" class="sameBtn gray ml15" onclick="location.href='/myPage/myQuestion/inquiryHistory'">목록</button>
+                            </div>
+
+                        </div>
+
+
+                    </div><!-- END sellCnt -->
+                </div><!-- END inner -->
+
+            </div><!--END Container-->
+		<div id="wizzFooter">
+			<footer th:include="common/footer"></footer>
+		</div>
+</body>
+<script type="text/javascript" th:inline="javascript">
+let fileLoc = [[ ${detail.fileLoc} ]];
+
+$("#imagePopup").click(function(){
+	let imagePopup = window.open("/myPage/myQuestion/imgPopup", "PopupWin", "width=640,height=640,location=no");
+	imagePopup.document.write("<img style='width:100%; height:100%' src='"+fileLoc+"'> ");
+})
+
+</script>
+</html>

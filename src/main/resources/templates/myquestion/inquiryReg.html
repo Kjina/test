@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+		<th:block th:include="common/header"></th:block>
+		<title>위즈니-마이페이지</title> 
+		<meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1"/>
+<!--	<meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,maximum-scale=1.0,minimum-scale=1.0,target-densitydpi=medium-dpi" />-->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="author" content="http://www..co.kr" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+		<meta name = "format-detection" content = "telephone=no"/>
+		<meta property="og:type" content="article" />
+		<meta property="og:site_name" content="위즈니" />
+		<meta property="og:url" content="http://www..co.kr" />
+		<meta property="og:title" content="위즈니" />
+		<meta property="og:description" content="위즈니" />
+		<meta property="og:image" content="" />
+		 
+		<link rel="stylesheet" href="/common/css/board.css" />
+
+<!-- <script type="text/javascript" src="/web5/js/jquery-1.9.1.min.js"></script> -->
+		<script src="/js/common/jquery-3.3.1.min.js"></script>
+		<script src="/js/common/common_func.js"></script>
+		<script type="text/javascript" src="/common/js/common.js"></script>
+		<script type="text/javascript" src="/common/js/slick.min.js"></script>
+</head>
+<body>
+	<!--Wrap-->
+	<div id="wrap">
+		<div class="sub_link">
+			<div class="inner">
+				<ul>
+					<li>홈&nbsp;&nbsp;&nbsp; &gt; &nbsp;&nbsp;&nbsp; 마이페이지 &nbsp;&nbsp;&nbsp; &gt; &nbsp;&nbsp;&nbsp; 1:1문의 &nbsp;&nbsp;&nbsp; &gt; &nbsp;&nbsp;&nbsp; 1:1 문의 등록 </li> 
+				</ul>
+			</div>
+		</div>
+		<!-- Skip Navigation -->
+		<span id="top_skip">
+			<a href="#gnb_wrap" onclick="$('#gnb_wrap').attr('tabindex', '-1').focus(); return false;">메뉴바로가기</a>
+			<a href="#container" onclick="$('#container').attr('tabindex', '-1').focus(); return false;">본문바로가기</a>
+		</span><!-- END Skip Navigation -->
+		
+			<!--Container-->
+			<div id="container">
+
+				<div class="inner">
+					<div class="sellCnt">
+						
+						<!-- 마이페이지 -->
+                        <div class="myWiz">
+                            <div class="myWiz_top" th:attr="onclick=|myMain('MM');|" style="cursor:pointer">마이페이지</div>
+                            <div class="myWiz_list">
+                                <ul class="lnb">
+                                    <li class="lnb_click"><a href="javascript:;">e쿠폰/마일리지</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myVirtual('VM');">등록물품관리</a></li>
+                                            <li><a href="javascript:myVirtual('TL');">거래내역</a></li>
+                                            <li><a href="javascript:myVirtual('PL');">패널티내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">일반상품</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myGoods('GM');">등록상품관리</a></li>
+                                            <li><a href="javascript:myGoods('SP');">판매진행</a></li>
+                                            <li><a href="javascript:myGoods('SH');">판매내역</a></li>
+                                            <li><a href="javascript:myGoods('PH');">주문결제내역</a></li>
+                                            <li><a href="javascript:myGoods('TK');">위즈톡</a></li>
+                                            <li><a href="javascript:myGoods('LS');">링크샵 상품관리</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈캐시</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzCash('WC');">위즈캐시충전</a></li>
+                                            <li><a href="javascript:myWizzCash('CH');">충전내역</a></li>
+                                            <li><a href="javascript:myWizzCash('CW');">위즈캐시출금</a></li>
+                                            <li><a href="javascript:myWizzCash('WH');">위즈캐시출금내역</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">위즈포인트</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myWizzPoint('WH');">포인트내역</a></li>
+                                            <li><a href="javascript:myWizzPoint('RA');">추천인적립</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">회원정보</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myUserInfo('RG');">인증관리</a></li>
+                                            <li><a href="javascript:myUserInfo('SS');">알림설정</a></li>
+                                            <li><a href="javascript:myUserInfo('RP');">비밀번호 재설정</a></li>
+                                            <li><a href="javascript:myUserInfo('CN');">닉네임 수정신청</a></li>
+                                            <li><a href="javascript:myUserInfo('MW');">회원탈퇴</a></li>
+                                        </ul>
+                                    </li>
+                                    <li class="lnb_click"><a href="javascript:;">1:1문의</a>
+                                        <ul class="lsnb">
+                                            <li><a href="javascript:myInquiry('IH');">문의내역</a></li>
+                                            <li><a href="javascript:myInquiry('IR');">문의등록</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div><!-- //마이페이지 -->
+
+
+						<div class="mypage">
+                            <h3 class="sub_title mb0">1:1 문의 등록</h3>
+                             <form id="inquiryForm" method="post" enctype="multipart/form-data" onsubmit="return false;">
+                             <input type="hidden" name="noticeId" th:value="${getInquiry.noticeId} ? ${getInquiry.noticeId} : ''">
+                            <!-- Board wrap -->
+                            <div class="board-wrap">
+                                <!-- board write -->
+                                <div class="board-write">
+                                    <ul class="board-write-form">
+                                        <li><div class="field-label"><label for="write-name">유형</label></div>
+                                            <div class="field-form">
+                                                <select name="questionType" id="">
+                                                    <option value="">유형 선택</option>
+                                                    <option th:selected="${getInquiry.questionType} == 'T'" value="T">거래 문의</option>
+                                                    <option th:selected="${getInquiry.questionType} == 'A'" value="A">인증 문의</option>
+                                                    <option th:selected="${getInquiry.questionType} == 'C'" value="C">캐시 문의</option>
+                                                    <option th:selected="${getInquiry.questionType} == 'P'" value="P">제휴 문의</option>
+                                                    <option th:selected="${getInquiry.questionType} == 'E'" value="E">기타 문의</option>
+                                                    <option th:selected="${getInquiry.questionType} == 'W'" value="W">회원 탈퇴 신청</option>
+                                                </select>
+                                            </div>
+                                        </li>
+                                        <li><div class="field-label"><label for="write-title">제목</label></div>
+                                            <div class="field-form">
+                                                <input type="text" name="title" id="write-title" placeholder="제목을 입력해 주세요." style="width: 80%;" th:value="${getInquiry.title} ? ${getInquiry.title} : ''">                 
+                                                <span style="color: #aaa;">※ 40자 이하</span>
+                                            </div>
+                                        </li>
+                                        <li><div class="field-label"><label for="write-content1">내용</label></div>
+                                            <div class="field-form">
+                                                <textarea name="contents" id="write-content1" cols="30" rows="10" th:text="${getInquiry.contents} ? ${getInquiry.contents} : ''"></textarea>
+                                            </div>
+                                        </li>
+                                        
+                                        <input type="hidden" id="counting" value="0">
+                                        
+                                        <li><div class="field-label"><label for="write-arim">답변 알림</label></div>
+                                            <div class="field-form">
+                                                <input type="checkbox" id="write-arim1" th:checked="${getInquiry.smsYn}=='Y' ? 'checked'">
+                                                <input type="hidden" id="write-arim1" name="smsYn" >
+                                                <label for="write-arim1" class="mr15">SMS수신</label>
+                                                <input type="checkbox" id="write-arim2" th:checked="${getInquiry.emailYn}=='Y' ? 'checked'">
+                                                <input type="hidden" id="write-arim2" name="emailYn" >
+                                                <label for="write-arim2">이메일 수신</label>
+                                            </div>
+                                        </li>
+                                        <li><div class="field-label">파일첨부</div>
+                                            <div class="field-form">
+                                                <ul class="write-files">
+                                                    <li>
+                                                        <div class="file-attach-box">
+                                                            <div class="file-attach file-write">
+                                                                <label for="w-file1" class="img_link">이미지 첨부</label>
+                                                                <input type="text" name="fileOriNm" style="display:inline-block; vertical-align:top;" th:value="${getInquiry.fileNm} ? ${getInquiry.fileNm} : ''" th:readonly="${getInquiry.fileNm} ? readonly"/>
+                                                                <input type="hidden" class="w-file1" name="file"/>
+                                                                <input type="file" id="w-file1" name="fileName" onchange="javascript:handleFileSelect('w-file1');" accept="image/*"/>
+                                                            </div>
+                                                        </div>
+                                                        <p style="font-size:13px; color: #aaa; line-height: 20px; margin-top: 3px;">jpg, png, gif 파일 형식만 업로드가 가능하며 첨부된 파일은 관리자에서 확인 후 자동으로 삭제됩니다.</p>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div><!-- END board write -->
+                            </div><!-- END Board wrap -->
+                            </form>
+                            <div class="mt40 align-c">
+                                <button th:text="${getInquiry.noticeId}==null ? '등록하기':'수정하기'" type="button" class="sameBtn" id="insertBtn"></button> 
+                                <button type="button" class="sameBtn gray ml15" onclick="location.href='/myPage/myQuestion/inquiryHistory'" >취소하기</button>
+                            </div>
+
+
+                        </div>
+
+
+                    </div><!-- END sellCnt -->
+                </div><!-- END inner -->
+<div class="loading-container">
+                          <div class="loding-wrap">
+                            <div class="loading"></div>
+                            <div id="loading-text">loading</div>
+                          </div>
+                        </div>
+            </div><!--END Container-->
+		<div id="wizzFooter">
+			<footer th:include="common/footer"></footer>
+		</div>
+</body>
+<script src="/js/common/jquery.form.js"></script> 
+<!-- <script type="text/javascript" src="/common/edit/js/service/HuskyEZCreator.js" charset="utf-8"></script> -->
+<script src="/js/mypage/myquestion/inquiryReg.js"></script>
+</html>
