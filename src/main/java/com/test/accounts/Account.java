@@ -23,9 +23,6 @@ public class Account {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(length = 255, nullable = false)
-    private String name;
-
     @Column(length = 255, nullable = false, unique = true)
     private String account;
 
@@ -38,9 +35,8 @@ public class Account {
     @Column(name = "reg_dt")
     private LocalDateTime regDt;
 
-    public Account(Integer id, String name, String account, String password) {
+    public Account(Integer id, String account, String password) {
         this.id = id;
-        this.name = name;
         this.account = account;
         this.password = password;
     }

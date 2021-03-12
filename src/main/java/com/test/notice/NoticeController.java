@@ -1,6 +1,5 @@
 package com.test.notice;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,24 +24,22 @@ public class NoticeController {
 	@Autowired
 	NoticeRepository noticeRepository;
 
+	@ExceptionHandler
 	@GetMapping("/list")
 	public ResponseEntity<List<Notice>> getAllTutorials(@RequestParam(required = false) String title) {
-		try {
-			List<Notice> list = new ArrayList<Notice>();
+	      List<Notice> list;
 
-			if (title == null)
-				noticeRepository.findAll().forEach(list::add);
-			else
-				noticeRepository.findByTitle(title).forEach(list::add);
+	      if (title == null) {
+	        list = noticeRepository.findAll();
+	      }else {
+	        list = noticeRepository.findByTitle(title);
+	      }
 
-			if (list.isEmpty()) {
-				return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-			}
+	      if (list.isEmpty()) {
+	        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	      }
 
-			return new ResponseEntity<>(list, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+	      return new ResponseEntity<>(list, HttpStatus.OK);
 	}
 
 	@GetMapping("/{id}")
@@ -50,20 +48,17 @@ public class NoticeController {
 
 		if (noticeData.isPresent()) {
 			return new ResponseEntity<>(noticeData.get(), HttpStatus.OK);
-		} else {
+		}else { 
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		}
 	}
 
+	@ExceptionHandler
 	@PostMapping("/create")
 	public ResponseEntity<Notice> createNotice(@RequestBody Notice notice) {
-		try {
-			notice.setRegDt(new Date());
-			Notice _notice = noticeRepository.save(notice);
-			return new ResponseEntity<>(_notice, HttpStatus.CREATED);
-		} catch (Exception e) {
-			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		notice.setRegDt(new Date());
+		Notice _notice = noticeRepository.save(notice);
+		return new ResponseEntity<>(_notice, HttpStatus.CREATED);
 	}
 
 	@PutMapping("/update/{id}")
@@ -81,24 +76,17 @@ public class NoticeController {
 		}
 	}
 
+	@ExceptionHandler
 	@DeleteMapping("/delete/{id}")
 	public ResponseEntity<HttpStatus> deleteNotice(@PathVariable("id") long id) {
-		try {
-			noticeRepository.deleteById(id);
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		noticeRepository.deleteById(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 
+	@ExceptionHandler
 	@DeleteMapping("/delete/all")
 	public ResponseEntity<HttpStatus> deleteAllNotice() {
-		try {
-			noticeRepository.deleteAll();
-			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
-		} catch (Exception e) {
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-
+		noticeRepository.deleteAll();
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

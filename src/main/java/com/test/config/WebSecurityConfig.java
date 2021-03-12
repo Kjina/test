@@ -37,22 +37,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 
         http.authorizeRequests()
-                .antMatchers("/user/**").authenticated()
+        		.antMatchers("/").permitAll()
+                .antMatchers("/user/**").permitAll()
                 .antMatchers("/admin/**").authenticated()
-                .antMatchers("/**").permitAll();
+                .antMatchers("/notice/**").hasRole("USER");
 
         http.formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/")
-                .permitAll();
+                .defaultSuccessUrl("/notice/list");
 
         http.logout()
-                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true);
-
-        http.exceptionHandling()
-                .accessDeniedPage("/denied");
     }
 
     @Override

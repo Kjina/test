@@ -25,9 +25,9 @@ import lombok.NoArgsConstructor;
 public class AccountInfo implements UserDetails {
 
   @Id
-  @Column(name = "code")
+  @Column(name = "id")
   @GeneratedValue(strategy= GenerationType.IDENTITY)
-  private Long code;
+  private Long id;
 
   @Column(name = "email", unique = true)
   private String email;

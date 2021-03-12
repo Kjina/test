@@ -9,9 +9,7 @@ import lombok.Setter;
 public class AccountVo {
 
     private Integer id;
-
-    private String email;
-
+    
     private String account;
 
     private String password;
@@ -21,7 +19,7 @@ public class AccountVo {
     private LocalDateTime regDt;
 
     public Account toEntity() {
-        return new Account(id, email, account, password);
+        return new Account(id, account, password);
     }
 
 }
