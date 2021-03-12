@@ -39,16 +39,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeRequests()
         		.antMatchers("/").permitAll()
                 .antMatchers("/user/**").permitAll()
-                .antMatchers("/admin/**").authenticated()
-                .antMatchers("/notice/**").hasRole("USER");
+                .antMatchers("/list").hasRole("USER");//.authenticated()
 
         http.formLogin()
                 .loginPage("/login")
-                .defaultSuccessUrl("/notice/list");
+                .defaultSuccessUrl("/list")
+                .permitAll();
 
         http.logout()
+        		.logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login")
                 .invalidateHttpSession(true);
+    
     }
 
     @Override

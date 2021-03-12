@@ -35,7 +35,7 @@ public class AccountServiceImpl implements AccountService {
 
     @Transactional
     @Override
-    public Integer save(AccountVo accountVo) {
+    public Integer save(AccountDto accountVo) {
         Account account = accountVo.toEntity();
         account.setLastAccessDt(LocalDateTime.now());
         account.setRegDt(LocalDateTime.now());

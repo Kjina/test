@@ -6,10 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 
 @Setter @Getter
-public class AccountVo {
-
-    private Integer id;
-    
+public class AccountDto {
+	private Integer id;
+	
     private String account;
 
     private String password;
