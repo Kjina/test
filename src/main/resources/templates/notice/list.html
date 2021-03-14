@@ -1,10 +1,30 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+<script type="text/javascript" th:inline="javascript">
+$(document).ready(function() {
+    $("#insertBtn").click(function() {
+        document.location.href = "/regist";
+    });
+    $("#deleteAllBtn").click(function () {
+        $.ajax({
+            url: "/delete/all",
+            method: "DELETE",
+            success: function () {
+            	document.location.href = "/list";
+            }
+        })
+    })
+});
+function detailBtn(id) {
+	location.href="/update/"+id;
+};
+</script>
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link type="text/css" rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.min.css">
+    <title>notice</title>
     <style type="text/css">
         body {
             background-color: #DADADA;
@@ -18,15 +38,30 @@
     </style>
 </head>
 <body>
-    <div class="ui middle aligned center aligned grid">
-        <div class="column">
-            <h2 class="ui header">Log-out</h2>
-            <form method="POST" th:action="@{/logout}" class="ui large form">
-                <div class="ui stacked segment">
-                     <button class="ui fluid large submit green button">Logut</button>
-                </div>
-            </form>
-        </div>
-    </div>
+          <table>
+            <tr>
+              <th>등록일시</th>
+              <th>제목</th>
+            </tr>
+            <th:block th:if="${list}==null">
+                <tr>
+                    <td colspan="4" style="padding: 20px 0;">등록된 문의 내역이 없습니다.</td>
+                </tr>
+            </th:block> 
+            <th:block th:each="list : ${list}">      
+               <tr th:attr="onclick=|javascript:detailBtn('${list.id}');|">
+                   <td th:text="${list.regDt}"></td>
+                   <td th:text="${list.title}"></td>
+                   <td><button type="button" th:attr="onclick=|javascript:detailBtn('${list.id}');|">수정하기</button> 
+                   </td>
+               </tr>
+            </th:block>
+        </table>
+        <div>
+    <button type="button" id="insertBtn">등록하기</button> 
+    <button type="button" id="deleteAllBtn">전체 삭제</button>
+    
+</div>
 </body>
+
 </html>

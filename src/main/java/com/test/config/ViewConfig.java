@@ -9,7 +9,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 public class ViewConfig implements WebMvcConfigurer {
 	@Bean
-    public ViewResolver getViewResolver() {
+    public ViewResolver getViewResolver() {	
         InternalResourceViewResolver resolver = new InternalResourceViewResolver();
         resolver.setPrefix("classpath:/templates/");
         resolver.setSuffix(".html");

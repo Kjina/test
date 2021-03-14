@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+<script type="text/javascript" th:inline="javascript">
+$(document).ready(function() {
+	var id = [[ ${notice.id} ]];
+    $("#delete").click(function () {
+    	var url = "/delete/"+id;
+        $.ajax({
+            url: url,
+            method: "DELETE",
+            success: function () {
+                document.location.href = "/list";
+            }
+        })
+    })
+    
+    $("#update").click(function () {
+    	var formData = $("#form").serialize();
+    	
+        var url = "/updateNotice/"+id;
+        $.ajax({
+            url: url,
+            method: "PUT",
+            data : formData,
+            success: function () {
+                document.location.href = "/list";
+            }
+        })
+    })
+});
+</script>
+<head>
+    <meta charset="UTF-8">
+    <title>notice</title>
+    <style type="text/css">
+        body {
+            background-color: #DADADA;
+        }
+        body > .grid {
+            height: 100%;
+        }
+        .column {
+            max-width: 450px;
+        }
+    </style>
+</head>
+<body>
+<form id="form" name="form" method="post">
+    <input type="hidden" th:value="${notice.id}" name="id">
+    <div>
+    <input type="text" th:value="${notice.title}" name="title" placeholder="제목입력">
+    </div>
+    <div>
+    <textarea name="content" th:text="${notice.content}" cols="30" rows="10" placeholder="내용입력"></textarea>
+    </div>
+</form>
+<div>
+    <button type="button" class="sameBtn gray ml15" onclick="location.href='/list'" >취소하기</button>
+    <button type="button" id="delete">삭제하기</button>
+    <button type="button" id="update">수정하기</button>
+</div>
+</body>
+
+</html>

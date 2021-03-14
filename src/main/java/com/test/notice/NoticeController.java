@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class NoticeController {
@@ -27,11 +24,9 @@ public class NoticeController {
 
 	@ExceptionHandler
 	@GetMapping("/list")
-	public String getAllTutorials(@RequestParam(required = false) String title, Model model) {
-
-	    System.out.println("aaaaa");
-		
+	public String getList(@RequestParam(required = false) String title, Model model) {
 		List<Notice> list;
+		
 		if (title == null) {
 			list = noticeRepository.findAll();
 		}else {
@@ -43,39 +38,42 @@ public class NoticeController {
 		return "notice/list";
 	}
 
-	@GetMapping("/{id}")
-	public ResponseEntity<Notice> getNotice(@PathVariable("id") long id) {
-		Optional<Notice> noticeData = noticeRepository.findById(id);
-
-		if (noticeData.isPresent()) {
-			return new ResponseEntity<>(noticeData.get(), HttpStatus.OK);
-		}else { 
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+	@GetMapping("/regist")
+	public String registNotice(Model model) {
+		Notice noticeData = new Notice();
+		model.addAttribute("notice", noticeData);
+		return "notice/regist";
 	}
-
+	
 	@ExceptionHandler
-	@PostMapping("/create")
-	public ResponseEntity<Notice> createNotice(@RequestBody Notice notice) {
-		System.out.println("cccc");
+	@PostMapping("/save")
+	public String saveNotice(Notice notice) {
 		notice.setRegDt(new Date());
-		Notice _notice = noticeRepository.save(notice);
-		return new ResponseEntity<>(_notice, HttpStatus.CREATED);
+		noticeRepository.save(notice);
+		return"redirect:/list";
 	}
-
-	@PutMapping("/update/{id}")
-	public ResponseEntity<Notice> updateNotice(@PathVariable("id") long id, @RequestBody Notice notice) {
+	
+	@GetMapping("/update/{id}")
+	public String getNotice(@PathVariable("id") long id, Model model) {
 		Optional<Notice> noticeData = noticeRepository.findById(id);
+		model.addAttribute("notice", noticeData.get());
 
-		if (noticeData.isPresent()) {
-			Notice _notice = noticeData.get();
-			_notice.setTitle(notice.getTitle());
-			_notice.setContent(notice.getContent());
-			_notice.setRegDt(new Date());
-			return new ResponseEntity<>(noticeRepository.save(_notice), HttpStatus.OK);
-		} else {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-		}
+		return "notice/update";
+	}
+	
+	@ExceptionHandler
+	@PutMapping("/updateNotice/{id}")
+	public ResponseEntity<HttpStatus> updateNotice(@PathVariable("id") long id,Notice notice) {
+		System.out.println("notice"+notice);
+		
+		Optional<Notice> noticeData = noticeRepository.findById(notice.getId());
+		Notice _notice = noticeData.get();
+		_notice.setTitle(notice.getTitle());
+		_notice.setContent(notice.getContent());
+		_notice.setRegDt(new Date());
+		
+		noticeRepository.save(_notice);	
+		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
 	@ExceptionHandler
@@ -88,6 +86,7 @@ public class NoticeController {
 	@ExceptionHandler
 	@DeleteMapping("/delete/all")
 	public ResponseEntity<HttpStatus> deleteAllNotice() {
+		System.out.println("??");
 		noticeRepository.deleteAll();
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}

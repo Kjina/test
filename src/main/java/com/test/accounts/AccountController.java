@@ -1,4 +1,4 @@
-package com.test.user;
+package com.test.accounts;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.test.accounts.AccountDto;
-import com.test.accounts.AccountService;
-
 @Controller
-public class UserController {
+public class AccountController {
 
 	@Autowired
 	private AccountService accountService;

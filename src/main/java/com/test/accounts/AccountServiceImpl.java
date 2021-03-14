@@ -28,7 +28,7 @@ public class AccountServiceImpl implements AccountService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
 
-        authorities.add(new SimpleGrantedAuthority("ROLE_MEMBER"));
+        authorities.add(new SimpleGrantedAuthority("USER"));
 
         return new User(accountEntity.getAccount(), accountEntity.getPassword(), authorities);
     }

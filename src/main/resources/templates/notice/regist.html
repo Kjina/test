@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="http://malsup.github.com/jquery.form.js"></script>
+<head>
+    <meta charset="UTF-8">
+    <title>notice</title>
+    <style type="text/css">
+        body {
+            background-color: #DADADA;
+        }
+        body > .grid {
+            height: 100%;
+        }
+        .column {
+            max-width: 450px;
+        }
+    </style>
+</head>
+<body>
+<form th:action="@{/save}" method="post">
+<div>
+    <div>
+    <input type="text" name="title" placeholder="제목입력">
+    </div>
+    <div>
+    <textarea name="content" cols="30" rows="10" placeholder="내용입력"></textarea>
+    <div>
+</div>
+<button type="submit">등록하기</button> 
+</form>
+<div>
+    <button type="button" class="sameBtn gray ml15" onclick="location.href='/list'" >취소하기</button>
+</div>
+</body>
+
+</html>

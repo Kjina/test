@@ -15,7 +15,7 @@ import lombok.ToString;
 @Entity@Setter@Getter@ToString
 public class Notice {
 	@Id @GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private long id;
 	@Column(name = "title")
 	private String title;
 	@Column(name = "content")
