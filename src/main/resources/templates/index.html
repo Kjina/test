@@ -13,8 +13,5 @@
             <a sec:authorize="isAuthenticated()" th:href="@{/logout}">로그아웃</a>
             <a sec:authorize="isAnonymous()" th:href="@{/signup}">회원가입</a>
         </div>
-        <div>
-            <a th:href="@{/userinfo}">내정보</a>
-        </div>
     </body>
 </html>

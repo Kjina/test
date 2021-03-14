@@ -18,8 +18,12 @@ public class Notice {
 	private long id;
 	@Column(name = "title")
 	private String title;
+	@Column(name = "register")
+	private String register;
 	@Column(name = "content")
 	private String content;
 	@Column(name = "regDt")
 	private Date regDt;
+	@Column(name = "lastRegDt")
+	private Date lastRegDt;
 }

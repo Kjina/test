@@ -3,6 +3,14 @@
 <script src='https://code.jquery.com/jquery-3.3.1.min.js'></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+                <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+        <style>
+            p { margin:20px 0px; }
+        </style>
 <script type="text/javascript" th:inline="javascript">
 $(document).ready(function() {
     $("#insertBtn").click(function() {
@@ -42,6 +50,7 @@ function detailBtn(id) {
             <tr>
               <th>등록일시</th>
               <th>제목</th>
+              <th>등록자</th>
             </tr>
             <th:block th:if="${list}==null">
                 <tr>
@@ -52,15 +61,62 @@ function detailBtn(id) {
                <tr th:attr="onclick=|javascript:detailBtn('${list.id}');|">
                    <td th:text="${list.regDt}"></td>
                    <td th:text="${list.title}"></td>
-                   <td><button type="button" th:attr="onclick=|javascript:detailBtn('${list.id}');|">수정하기</button> 
+                   <td th:text="${list.register}"></td>
+                   <td><button type="button" th:attr="onclick=|javascript:detailBtn('${list.id}');|">상세보기</button> 
                    </td>
                </tr>
             </th:block>
         </table>
         <div>
+        <nav style="text-align: center;" th:if="${totalPages!=0}">
+            <!--표에 사용될 변수값 초기화 -->
+            <ul class="pagination"
+                th:with="start=${T(Math).floor(list.number/10)*10 + 1},
+                    last=(${start + 9 < list.totalPages ? start + 9 : list.totalPages})">
+                <th:block th:with="
+                firstAddr=@{/list(page=1)},
+                prevAddr=@{/list(page=${list.number})},
+                nextAddr=@{/list(page=${list.number + 2})},
+                lastAddr=@{/list(page=${list.totalPages})}">
+                    <li>
+                        <a th:href="${firstAddr}" aria-label="First">
+                            <span aria-hidden="true">First</span>
+                        </a>
+                    </li>
+                    <!-- 이전 페이지로 가기 버튼 -->
+                    <li th:class="${list.first} ? 'disabled'">
+                        <a th:href="${list.first} ? '#' :${prevAddr}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&lt;</span>
+                        </a>
+                    </li>
+                    <!--1,2,3,4,.. 등 페이지-->
+                    <li th:each="page: ${#numbers.sequence(start, last)}"
+                        th:class="${page == list.number + 1} ? 'active'">
+                        <a th:text="${page}" th:href="@{/list(page=${page})}"></a>
+                    </li>
+                    <!--다음 페이지로 -->
+                    <li th:class="${list.last} ? 'disabled'">
+                        <a th:href="${list.last} ? '#' : ${nextAddr}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </li>
+                    <!--맨 마지막 페이지로 이동 -->
+                    <li>
+                        <a th:href="${lastAddr}" aria-label="Last">
+                            <span aria-hidden="true">Last</span>
+                        </a>
+                    </li>
+                </th:block>
+            </ul>
+        </nav>
+
     <button type="button" id="insertBtn">등록하기</button> 
     <button type="button" id="deleteAllBtn">전체 삭제</button>
     
+   
+</div>
 </div>
 </body>
 

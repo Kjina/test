@@ -50,15 +50,18 @@ $(document).ready(function() {
 <body>
 <form id="form" name="form" method="post">
     <input type="hidden" th:value="${notice.id}" name="id">
-    <div>
-    <input type="text" th:value="${notice.title}" name="title" placeholder="제목입력">
+    <div th:text="작성일 +${notice.regDt}"></div>
+    <div th:if="${notice.lastRegDt}!=null" th:text="최종수정일 +${notice.lastRegDt}"></div>
+    <div th:text="작성자 +${notice.register}"></div>
+    <div>제목
+    <input type="text" th:value="${notice.title}" name="title" placeholder="제목입력"></div>
     </div>
-    <div>
+    <div> 내용
     <textarea name="content" th:text="${notice.content}" cols="30" rows="10" placeholder="내용입력"></textarea>
     </div>
 </form>
 <div>
-    <button type="button" class="sameBtn gray ml15" onclick="location.href='/list'" >취소하기</button>
+    <button type="button" class="sameBtn gray ml15" onclick="location.href='/list'" >리스트로</button>
     <button type="button" id="delete">삭제하기</button>
     <button type="button" id="update">수정하기</button>
 </div>
